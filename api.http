@@ -1,0 +1,11 @@
+
+GET http://localhost:3000/routes
+
+POST http://localhost:3000/routes
+Content-Type: application/json
+
+{
+  "title": "Insert Test",
+  "startPosition": { "lat": 20, "lng": 13 },
+  "endPosition": { "lat": 11, "lng": 11 }
+}

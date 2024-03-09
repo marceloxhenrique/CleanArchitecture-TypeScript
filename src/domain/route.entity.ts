@@ -1,3 +1,4 @@
+import crypto from "crypto";
 export type LatLng = {
   lat: number;
   lng: number;
@@ -11,12 +12,14 @@ export type RouterProps = {
 };
 
 export class Route {
+  public readonly id: string;
   public props: Required<RouterProps>;
-  constructor(props: RouterProps) {
-    this.props = {
-      ...props,
-      points: props.points || [],
-    };
+  constructor(props: RouterProps, id?: string) {
+    (this.id = id || crypto.randomUUID()),
+      (this.props = {
+        ...props,
+        points: props.points || [],
+      });
   }
 
   updateTitle(title: string) {
@@ -75,16 +78,9 @@ export class Route {
   }
 
   toJSON() {
-    return this.props;
+    return {
+      id: this.id,
+      ...this.props,
+    };
   }
 }
-
-const route: Route = new Route({
-  title: "My route",
-  startPosition: { lat: 12, lng: 34 },
-  endPosition: { lat: 56, lng: 78 },
-  points: [
-    { lat: 12, lng: 34 },
-    { lat: 56, lng: 78 },
-  ],
-});

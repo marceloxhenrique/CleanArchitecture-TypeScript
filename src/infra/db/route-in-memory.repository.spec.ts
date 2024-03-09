@@ -1,5 +1,5 @@
 import { title } from "process";
-import { LatLng, Route, RouterProps } from "../domain/route.entity";
+import { LatLng, Route, RouterProps } from "../../domain/route.entity";
 import { RouteInMemoryRepository } from "./route-in-memory.repository";
 
 describe("RouteInMemoryRepository", () => {

@@ -1,4 +1,3 @@
-import exp from "constants";
 import { LatLng, Route, RouterProps } from "./route.entity";
 
 describe("Route Tests", () => {
@@ -21,6 +20,7 @@ describe("Route Tests", () => {
       points: [{ lat: 20, lng: 30 }],
     };
     route = new Route(routeProps);
+    expect(route.id).toBeDefined();
     expect(route.props).toStrictEqual({
       ...routeProps,
       points: [{ lat: 20, lng: 30 }],
@@ -30,7 +30,7 @@ describe("Route Tests", () => {
     expect(route.props.title).toBe("My test");
   });
 
-  test("Should update the route title", () => {
+  test("Should update route title", () => {
     const route: Route = new Route({
       title: "My Route",
       startPosition: { lat: 0, lng: 1 },
